@@ -1,0 +1,64 @@
+﻿@model DBCResort.Models.news
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>news</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idNews)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idNews)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.employee.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.employee.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfStart)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfStart)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfEnd)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfEnd)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Text)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Text)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ImgLink)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ImgLink)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Place)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Place)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mydbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="mydbModelStoreContainer">
+          <EntitySet Name="employee" EntityType="mydbModel.Store.employee" store:Type="Tables" Schema="mydb" />
+          <EntitySet Name="guest" EntityType="mydbModel.Store.guest" store:Type="Tables" Schema="mydb" />
+          <EntitySet Name="news" EntityType="mydbModel.Store.news" store:Type="Tables" Schema="mydb" />
+          <EntitySet Name="reservation" EntityType="mydbModel.Store.reservation" store:Type="Tables" Schema="mydb" />
+          <EntitySet Name="room" EntityType="mydbModel.Store.room" store:Type="Tables" Schema="mydb" />
+          <AssociationSet Name="fk_News_Employee1" Association="mydbModel.Store.fk_News_Employee1">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reservation_Employee1" Association="mydbModel.Store.fk_Reservation_Employee1">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reservation_Guest1" Association="mydbModel.Store.fk_Reservation_Guest1">
+            <End Role="guest" EntitySet="guest" />
+            <End Role="reservation" EntitySet="reservation" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Room_Employee1" Association="mydbModel.Store.fk_Room_Employee1">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="room" EntitySet="room" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="idEmployee" />
+          </Key>
+          <Property Name="idEmployee" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="45" />
+          <Property Name="Password" Type="varchar" MaxLength="45" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+          <Property Name="Surname" Type="varchar" MaxLength="45" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Type" Type="varchar" MaxLength="45" />
+          <Property Name="Salary" Type="int" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="idGuest" />
+          </Key>
+          <Property Name="idGuest" Type="int" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="45" />
+          <Property Name="Password" Type="varchar" MaxLength="45" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+          <Property Name="Surname" Type="varchar" MaxLength="45" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="CreditCardNum" Type="varchar" MaxLength="45" />
+          <Property Name="DateOfExpiration" Type="datetime" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="idNews" />
+            <PropertyRef Name="Employee_idEmployee" />
+          </Key>
+          <Property Name="idNews" Type="int" Nullable="false" />
+          <Property Name="Employee_idEmployee" Type="int" Nullable="false" />
+          <Property Name="DateOfStart" Type="datetime" />
+          <Property Name="DateOfEnd" Type="datetime" />
+          <Property Name="Text" Type="varchar" MaxLength="500" />
+          <Property Name="ImgLink" Type="varchar" MaxLength="100" />
+          <Property Name="Place" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="idReservation" />
+            <PropertyRef Name="Room_idRoom" />
+            <PropertyRef Name="Guest_idGuest" />
+            <PropertyRef Name="Employee_idEmployee" />
+          </Key>
+          <Property Name="idReservation" Type="int" Nullable="false" />
+          <Property Name="Room_idRoom" Type="int" Nullable="false" />
+          <Property Name="Guest_idGuest" Type="int" Nullable="false" />
+          <Property Name="Employee_idEmployee" Type="int" Nullable="false" />
+          <Property Name="DateOfStart" Type="datetime" />
+          <Property Name="DateOfEnd" Type="datetime" />
+          <Property Name="ExtraOptions" Type="varchar" MaxLength="200" />
+          <Property Name="NumOfGuests" Type="int" />
+          <Property Name="NumOfRooms" Type="int" />
+          <Property Name="Price" Type="double" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6035: The relationship 'fk_Reservation_Room1' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      -->
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="idRoom" />
+            <PropertyRef Name="Employee_idEmployee" />
+          </Key>
+          <Property Name="idRoom" Type="int" Nullable="false" />
+          <Property Name="Employee_idEmployee" Type="int" Nullable="false" />
+          <Property Name="NumOfRoom" Type="int" />
+          <Property Name="NumOfBeds" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="45" />
+          <Property Name="Info" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="fk_News_Employee1">
+          <End Role="employee" Type="mydbModel.Store.employee" Multiplicity="1" />
+          <End Role="news" Type="mydbModel.Store.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="Employee_idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reservation_Employee1">
+          <End Role="employee" Type="mydbModel.Store.employee" Multiplicity="1" />
+          <End Role="reservation" Type="mydbModel.Store.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="Employee_idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reservation_Guest1">
+          <End Role="guest" Type="mydbModel.Store.guest" Multiplicity="1" />
+          <End Role="reservation" Type="mydbModel.Store.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="idGuest" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="Guest_idGuest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Room_Employee1">
+          <End Role="employee" Type="mydbModel.Store.employee" Multiplicity="1" />
+          <End Role="room" Type="mydbModel.Store.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="Employee_idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mydbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="mydbEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="employees" EntityType="mydbModel.employee" />
+          <EntitySet Name="guests" EntityType="mydbModel.guest" />
+          <EntitySet Name="news" EntityType="mydbModel.news" />
+          <EntitySet Name="reservations" EntityType="mydbModel.reservation" />
+          <EntitySet Name="rooms" EntityType="mydbModel.room" />
+          <AssociationSet Name="fk_News_Employee1" Association="mydbModel.fk_News_Employee1">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reservation_Employee1" Association="mydbModel.fk_Reservation_Employee1">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="reservation" EntitySet="reservations" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Room_Employee1" Association="mydbModel.fk_Room_Employee1">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="room" EntitySet="rooms" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Reservation_Guest1" Association="mydbModel.fk_Reservation_Guest1">
+            <End Role="guest" EntitySet="guests" />
+            <End Role="reservation" EntitySet="reservations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="idEmployee" />
+          </Key>
+          <Property Name="idEmployee" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Surname" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="DateTime" />
+          <Property Name="Type" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Salary" Type="Int32" />
+          <NavigationProperty Name="news" Relationship="mydbModel.fk_News_Employee1" FromRole="employee" ToRole="news" />
+          <NavigationProperty Name="reservations" Relationship="mydbModel.fk_Reservation_Employee1" FromRole="employee" ToRole="reservation" />
+          <NavigationProperty Name="rooms" Relationship="mydbModel.fk_Room_Employee1" FromRole="employee" ToRole="room" />
+        </EntityType>
+        <EntityType Name="guest">
+          <Key>
+            <PropertyRef Name="idGuest" />
+          </Key>
+          <Property Name="idGuest" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Surname" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="DateOfBirth" Type="DateTime" />
+          <Property Name="CreditCardNum" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="DateOfExpiration" Type="DateTime" />
+          <NavigationProperty Name="reservations" Relationship="mydbModel.fk_Reservation_Guest1" FromRole="guest" ToRole="reservation" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="idNews" />
+            <PropertyRef Name="Employee_idEmployee" />
+          </Key>
+          <Property Name="idNews" Type="Int32" Nullable="false" />
+          <Property Name="Employee_idEmployee" Type="Int32" Nullable="false" />
+          <Property Name="DateOfStart" Type="DateTime" />
+          <Property Name="DateOfEnd" Type="DateTime" />
+          <Property Name="Text" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="ImgLink" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Place" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="employee" Relationship="mydbModel.fk_News_Employee1" FromRole="news" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="reservation">
+          <Key>
+            <PropertyRef Name="idReservation" />
+            <PropertyRef Name="Room_idRoom" />
+            <PropertyRef Name="Guest_idGuest" />
+            <PropertyRef Name="Employee_idEmployee" />
+          </Key>
+          <Property Name="idReservation" Type="Int32" Nullable="false" />
+          <Property Name="Room_idRoom" Type="Int32" Nullable="false" />
+          <Property Name="Guest_idGuest" Type="Int32" Nullable="false" />
+          <Property Name="Employee_idEmployee" Type="Int32" Nullable="false" />
+          <Property Name="DateOfStart" Type="DateTime" />
+          <Property Name="DateOfEnd" Type="DateTime" />
+          <Property Name="ExtraOptions" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="NumOfGuests" Type="Int32" />
+          <Property Name="NumOfRooms" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="employee" Relationship="mydbModel.fk_Reservation_Employee1" FromRole="reservation" ToRole="employee" />
+          <NavigationProperty Name="guest" Relationship="mydbModel.fk_Reservation_Guest1" FromRole="reservation" ToRole="guest" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="idRoom" />
+            <PropertyRef Name="Employee_idEmployee" />
+          </Key>
+          <Property Name="idRoom" Type="Int32" Nullable="false" />
+          <Property Name="Employee_idEmployee" Type="Int32" Nullable="false" />
+          <Property Name="NumOfRoom" Type="Int32" />
+          <Property Name="NumOfBeds" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="Info" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="employee" Relationship="mydbModel.fk_Room_Employee1" FromRole="room" ToRole="employee" />
+        </EntityType>
+        <Association Name="fk_News_Employee1">
+          <End Role="employee" Type="mydbModel.employee" Multiplicity="1" />
+          <End Role="news" Type="mydbModel.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="Employee_idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reservation_Employee1">
+          <End Role="employee" Type="mydbModel.employee" Multiplicity="1" />
+          <End Role="reservation" Type="mydbModel.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="Employee_idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Room_Employee1">
+          <End Role="employee" Type="mydbModel.employee" Multiplicity="1" />
+          <End Role="room" Type="mydbModel.room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="room">
+              <PropertyRef Name="Employee_idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Reservation_Guest1">
+          <End Role="guest" Type="mydbModel.guest" Multiplicity="1" />
+          <End Role="reservation" Type="mydbModel.reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="guest">
+              <PropertyRef Name="idGuest" />
+            </Principal>
+            <Dependent Role="reservation">
+              <PropertyRef Name="Guest_idGuest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mydbModelStoreContainer" CdmEntityContainer="mydbEntities">
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="mydbModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="guests">
+            <EntityTypeMapping TypeName="mydbModel.guest">
+              <MappingFragment StoreEntitySet="guest">
+                <ScalarProperty Name="idGuest" ColumnName="idGuest" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="CreditCardNum" ColumnName="CreditCardNum" />
+                <ScalarProperty Name="DateOfExpiration" ColumnName="DateOfExpiration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="mydbModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="idNews" ColumnName="idNews" />
+                <ScalarProperty Name="Employee_idEmployee" ColumnName="Employee_idEmployee" />
+                <ScalarProperty Name="DateOfStart" ColumnName="DateOfStart" />
+                <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ImgLink" ColumnName="ImgLink" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reservations">
+            <EntityTypeMapping TypeName="mydbModel.reservation">
+              <MappingFragment StoreEntitySet="reservation">
+                <ScalarProperty Name="idReservation" ColumnName="idReservation" />
+                <ScalarProperty Name="Room_idRoom" ColumnName="Room_idRoom" />
+                <ScalarProperty Name="Guest_idGuest" ColumnName="Guest_idGuest" />
+                <ScalarProperty Name="Employee_idEmployee" ColumnName="Employee_idEmployee" />
+                <ScalarProperty Name="DateOfStart" ColumnName="DateOfStart" />
+                <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+                <ScalarProperty Name="ExtraOptions" ColumnName="ExtraOptions" />
+                <ScalarProperty Name="NumOfGuests" ColumnName="NumOfGuests" />
+                <ScalarProperty Name="NumOfRooms" ColumnName="NumOfRooms" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rooms">
+            <EntityTypeMapping TypeName="mydbModel.room">
+              <MappingFragment StoreEntitySet="room">
+                <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+                <ScalarProperty Name="Employee_idEmployee" ColumnName="Employee_idEmployee" />
+                <ScalarProperty Name="NumOfRoom" ColumnName="NumOfRoom" />
+                <ScalarProperty Name="NumOfBeds" ColumnName="NumOfBeds" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

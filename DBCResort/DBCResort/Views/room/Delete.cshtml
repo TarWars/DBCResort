@@ -1,0 +1,61 @@
+﻿@model DBCResort.Models.room
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>room</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idRoom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idRoom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.employee.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.employee.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumOfRoom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumOfRoom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumOfBeds)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumOfBeds)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Info)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Info)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

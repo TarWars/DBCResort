@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DBCResort.Models.news>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idNews)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employee.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idNews)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.employee.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImgLink)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

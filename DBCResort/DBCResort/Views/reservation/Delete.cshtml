@@ -1,0 +1,89 @@
+﻿@model DBCResort.Models.reservation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>reservation</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idReservation)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idReservation)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Room_idRoom)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Room_idRoom)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.guest.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.guest.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.employee.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.employee.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfStart)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfStart)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfEnd)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfEnd)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExtraOptions)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExtraOptions)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumOfGuests)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumOfGuests)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumOfRooms)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumOfRooms)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
