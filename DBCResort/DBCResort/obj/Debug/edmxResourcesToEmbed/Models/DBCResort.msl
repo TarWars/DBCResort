@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mydbModelStoreContainer" CdmEntityContainer="mydbEntities">
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="mydbModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="guests">
+      <EntityTypeMapping TypeName="mydbModel.guest">
+        <MappingFragment StoreEntitySet="guest">
+          <ScalarProperty Name="idGuest" ColumnName="idGuest" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="CreditCardNum" ColumnName="CreditCardNum" />
+          <ScalarProperty Name="DateOfExpiration" ColumnName="DateOfExpiration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="news">
+      <EntityTypeMapping TypeName="mydbModel.news">
+        <MappingFragment StoreEntitySet="news">
+          <ScalarProperty Name="idNews" ColumnName="idNews" />
+          <ScalarProperty Name="Employee_idEmployee" ColumnName="Employee_idEmployee" />
+          <ScalarProperty Name="DateOfStart" ColumnName="DateOfStart" />
+          <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ImgLink" ColumnName="ImgLink" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservations">
+      <EntityTypeMapping TypeName="mydbModel.reservation">
+        <MappingFragment StoreEntitySet="reservation">
+          <ScalarProperty Name="idReservation" ColumnName="idReservation" />
+          <ScalarProperty Name="Room_idRoom" ColumnName="Room_idRoom" />
+          <ScalarProperty Name="Guest_idGuest" ColumnName="Guest_idGuest" />
+          <ScalarProperty Name="Employee_idEmployee" ColumnName="Employee_idEmployee" />
+          <ScalarProperty Name="DateOfStart" ColumnName="DateOfStart" />
+          <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+          <ScalarProperty Name="ExtraOptions" ColumnName="ExtraOptions" />
+          <ScalarProperty Name="NumOfGuests" ColumnName="NumOfGuests" />
+          <ScalarProperty Name="NumOfRooms" ColumnName="NumOfRooms" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rooms">
+      <EntityTypeMapping TypeName="mydbModel.room">
+        <MappingFragment StoreEntitySet="room">
+          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="Employee_idEmployee" ColumnName="Employee_idEmployee" />
+          <ScalarProperty Name="NumOfRoom" ColumnName="NumOfRoom" />
+          <ScalarProperty Name="NumOfBeds" ColumnName="NumOfBeds" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
