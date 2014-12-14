@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12ea4f5e01c443b989d1cfa82c4519e9" Name="Diagram1">
+        <EntityTypeShape EntityType="DBCResortModel.Employee" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCResortModel.Guest" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCResortModel.News" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCResortModel.Reservation" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCResortModel.Room" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="DBCResortModel.FK_News_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCResortModel.FK_Reservation_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCResortModel.FK_Room_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCResortModel.FK_Reservation_Guest" ManuallyRouted="false" />
+        <AssociationConnector Association="DBCResortModel.FK_Reservation_Room" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

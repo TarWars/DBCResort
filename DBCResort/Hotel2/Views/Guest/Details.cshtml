@@ -1,0 +1,71 @@
+﻿@model Hotel2.Models.Guest
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Guest</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idGuest)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idGuest)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateOfBirth)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfBirth)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreditCardNum)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreditCardNum)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataOfExpiration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataOfExpiration)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.idGuest }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

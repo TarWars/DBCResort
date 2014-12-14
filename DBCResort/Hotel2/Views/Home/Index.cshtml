@@ -1,0 +1,137 @@
+﻿@model Hotel2.Models.Reservation
+
+<!DOCTYPE html>
+<head>
+    <title>Hotel Motel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/Content/HomeStyle.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/CustomScripts/All.js"></script>
+</head>
+
+<body>
+    <div ng-app="app">
+        <div ng-controller="getEverythingCtrl">
+
+
+            <div id="container">
+                <div id="header">
+                    <div id="website_title">
+                        <div id="title"> DBC Resort </div>
+                        <div id="salgon"> Divine, Beautiful, Classy.</div>
+                    </div>
+                </div>
+                <!-- end of header -->
+                <div id="banner">
+                    <div id="menu">
+                        <ul>
+                            <li><a href="#" class="current">Home</a></li>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Slike</a></li>
+                            <li><a href="/guests/create">Registracija</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                            <li><a href="/dashboard/index" >Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end of banner -->
+                <div id="content">
+                    <div id="content_left">
+                        <div class="content_left_section">
+                            <div ng-controller="bookingctrl">
+                                <table border="0">
+
+                                    <tr>
+                                        <td>Room:</td>
+                                        <td><select ng-model="roomId" ng-options="room for room in rooms" style="width: 154px; margin-right: 20px;"></select></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Start date:
+                                        </td>
+                                       <td> <input type="date" ng-model="sdate" style="width: 150px; margin-right: 20px;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            End date
+                                        </td>
+                                        <td><input type="date" ng-model="edate" name="edate" style="width: 150px; margin-right: 20px;" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Number of guests:
+                                        </td>
+                                        <td><input type="text" ng-model="numguests" style="width: 150px; margin-right: 20px;" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td><br /></td><td><button ng-click="enterbooking()" class="btn btn-default"> Reserve</button> <br />
+                                </table>   
+                                </div>
+                        </div>
+                        <div class="cleaner">&nbsp;</div>
+                        <!-- end of booking -->
+                        <div class="cleaner_h30">&nbsp;</div>
+                        <div class="cleaner_horizontal_divider_01">&nbsp;</div>
+                        <div class="cleaner_h30">&nbsp;</div>
+                        <div class="content_left_section">
+                            <div class="content_title_01">Novosti</div>
+                         
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                           
+                            <ol style="list-style-type:none;" ng-repeat="noti in news">
+                                <li>
+                                 
+                                    <div class="news_title">
+                                        {{noti.Place}}
+                                    </div>
+                                      
+                                        {{noti.Text}}
+
+                                    <div class="cleaner_h30">&nbsp;</div>
+</li>
+                            </ol>
+                            
+                            
+                            
+                      
+                           
+                        </div>
+                        <!-- end of news section -->
+                    </div>
+                    <!-- end of content left -->
+                    <div id="content_right">
+                        <div class="content_right_section">
+                            <div class="content_title_01">Welcome to hotel &amp; travel</div>
+                            <img src="/Content/image_01.jpg" alt="" />
+                            <p>Ovo je nevjerovatni Hotel Motel.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum, urna eu feugiat ultricies, turpis leo tempor lacus, in vestibulum diam nisl sed lorem. </p>
+                            <p>Napisaćemo nešto već o hotelu bla bla bla bla bla bla bla</p>
+                        </div>
+                        <div class="cleaner_h40">&nbsp;</div>
+                        <div class="content_right_section">
+                            <div class="content_title_01">Slike</div>
+                            <div class="gallery_box"> <img src="~/Content/image_02.jpg" alt="" /> <a href="#">1</a> </div>
+                            <div class="gallery_box"> <img src="~/Content/image_03.jpg" alt="" /> <a href="#">2</a> </div>
+                            <div class="gallery_box"> <img src="~/Content/image_04.jpg" alt="" /> <a href="#">3</a> </div>
+                            <div class="gallery_box"> <img src="~/Content/image_05.jpg" alt="" /> <a href="#">4</a> </div>
+                            <div class="gallery_box"> <img src="~/Content/image_06.jpg" alt="" /> <a href="#">5</a> </div>
+                            <div class="cleaner_h20">&nbsp;</div>
+                            <div class="rc_btn_02"><a href="#">Proširi</a></div>
+                            <div class="cleaner">&nbsp;</div>
+                        </div>
+                        <div class="cleaner_h20">&nbsp;</div>
+                    </div>
+                    <!-- end of content right -->
+                    <div class="cleaner">&nbsp;</div>
+                </div>
+                <div id="footer">
+                    Copyright &copy; 2015 <a href="#"><strong>DBC Resort</strong></a>
+                </div>
+                <!-- end of footer -->
+            </div>
+            </div>
+        </div>
+        <!-- end of container -->
+</body>

@@ -1,0 +1,92 @@
+﻿@model Hotel2.Models.Reservation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Reservation</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idReservation)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idReservation)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Room.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Room.Status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Guest.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Guest.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Employee.Username)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Employee.Username)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ReservationDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReservationDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StartDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EndDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExtraOptions)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExtraOptions)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumOfRooms)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumOfRooms)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumOfGuests)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumOfGuests)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.idReservation }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

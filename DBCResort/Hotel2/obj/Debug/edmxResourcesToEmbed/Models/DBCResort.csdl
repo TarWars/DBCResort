@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBCResortModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="idEmplyee" />
+    </Key>
+    <Property Name="idEmplyee" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Salary" Type="Int32" />
+    <NavigationProperty Name="News" Relationship="Self.FK_News_Employee" FromRole="Employee" ToRole="News" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Employee" FromRole="Employee" ToRole="Reservation" />
+    <NavigationProperty Name="Rooms" Relationship="Self.FK_Room_Employee" FromRole="Employee" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="idGuest" />
+    </Key>
+    <Property Name="idGuest" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="CreditCardNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DataOfExpiration" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Guest" FromRole="Guest" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="idNews" />
+    </Key>
+    <Property Name="idNews" Type="Int32" Nullable="false" />
+    <Property Name="idEmpoyee" Type="Int32" Nullable="false" />
+    <Property Name="DateOfStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateOfEnd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ImgLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_News_Employee" FromRole="News" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="idReservation" />
+    </Key>
+    <Property Name="idReservation" Type="Int32" Nullable="false" />
+    <Property Name="idRoom" Type="Int32" Nullable="false" />
+    <Property Name="idGuest" Type="Int32" Nullable="false" />
+    <Property Name="idEmpoyee" Type="Int32" Nullable="false" />
+    <Property Name="ReservationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ExtraOptions" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="NumOfRooms" Type="Int32" />
+    <Property Name="NumOfGuests" Type="Int32" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Reservation_Employee" FromRole="Reservation" ToRole="Employee" />
+    <NavigationProperty Name="Guest" Relationship="Self.FK_Reservation_Guest" FromRole="Reservation" ToRole="Guest" />
+    <NavigationProperty Name="Room" Relationship="Self.FK_Reservation_Room" FromRole="Reservation" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="idRoom" />
+    </Key>
+    <Property Name="idRoom" Type="Int32" Nullable="false" />
+    <Property Name="idEmployee" Type="Int32" Nullable="false" />
+    <Property Name="NumOfRoom" Type="Int32" Nullable="false" />
+    <Property Name="NumOfBeds" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Room_Employee" FromRole="Room" ToRole="Employee" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Room" FromRole="Room" ToRole="Reservation" />
+  </EntityType>
+  <Association Name="FK_News_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="idEmplyee" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="idEmpoyee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="idEmplyee" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="idEmpoyee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="idEmplyee" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="idEmployee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Guest">
+    <End Role="Guest" Type="Self.Guest" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Guest">
+        <PropertyRef Name="idGuest" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="idGuest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reservation_Room">
+    <End Role="Room" Type="Self.Room" Multiplicity="1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="idRoom" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="idRoom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBCResortEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Guests" EntityType="Self.Guest" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+    <EntitySet Name="Rooms" EntityType="Self.Room" />
+    <AssociationSet Name="FK_News_Employee" Association="Self.FK_News_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Employee" Association="Self.FK_Reservation_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_Employee" Association="Self.FK_Room_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Guest" Association="Self.FK_Reservation_Guest">
+      <End Role="Guest" EntitySet="Guests" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reservation_Room" Association="Self.FK_Reservation_Room">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

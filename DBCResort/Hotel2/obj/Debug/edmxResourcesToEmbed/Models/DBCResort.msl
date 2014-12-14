@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBCResortModelStoreContainer" CdmEntityContainer="DBCResortEntities">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="DBCResortModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="idEmplyee" ColumnName="idEmplyee" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guests">
+      <EntityTypeMapping TypeName="DBCResortModel.Guest">
+        <MappingFragment StoreEntitySet="Guest">
+          <ScalarProperty Name="idGuest" ColumnName="idGuest" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="CreditCardNum" ColumnName="CreditCardNum" />
+          <ScalarProperty Name="DataOfExpiration" ColumnName="DataOfExpiration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="DBCResortModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="idNews" ColumnName="idNews" />
+          <ScalarProperty Name="idEmpoyee" ColumnName="idEmpoyee" />
+          <ScalarProperty Name="DateOfStart" ColumnName="DateOfStart" />
+          <ScalarProperty Name="DateOfEnd" ColumnName="DateOfEnd" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ImgLink" ColumnName="ImgLink" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="DBCResortModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="idReservation" ColumnName="idReservation" />
+          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="idGuest" ColumnName="idGuest" />
+          <ScalarProperty Name="idEmpoyee" ColumnName="idEmpoyee" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ExtraOptions" ColumnName="ExtraOptions" />
+          <ScalarProperty Name="NumOfRooms" ColumnName="NumOfRooms" />
+          <ScalarProperty Name="NumOfGuests" ColumnName="NumOfGuests" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="DBCResortModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="idRoom" ColumnName="idRoom" />
+          <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+          <ScalarProperty Name="NumOfRoom" ColumnName="NumOfRoom" />
+          <ScalarProperty Name="NumOfBeds" ColumnName="NumOfBeds" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Info" ColumnName="Info" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
