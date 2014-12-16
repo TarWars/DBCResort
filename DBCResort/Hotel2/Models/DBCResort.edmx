@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBCResortModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBCResortModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="idEmplyee" />
           </Key>
-          <Property Name="idEmplyee" Type="int" Nullable="false" />
+          <Property Name="idEmplyee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="idNews" />
           </Key>
-          <Property Name="idNews" Type="int" Nullable="false" />
+          <Property Name="idNews" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idEmpoyee" Type="int" Nullable="false" />
           <Property Name="DateOfStart" Type="datetime" Nullable="false" />
           <Property Name="DateOfEnd" Type="datetime" Nullable="false" />
@@ -63,12 +63,12 @@
           <Key>
             <PropertyRef Name="idRoom" />
           </Key>
-          <Property Name="idRoom" Type="int" Nullable="false" />
+          <Property Name="idRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idEmployee" Type="int" Nullable="false" />
           <Property Name="NumOfRoom" Type="int" Nullable="false" />
           <Property Name="NumOfBeds" Type="int" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Info" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Info" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_News_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
@@ -232,7 +232,7 @@
           <Property Name="NumOfRoom" Type="Int32" Nullable="false" />
           <Property Name="NumOfBeds" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Room_Employee" FromRole="Room" ToRole="Employee" />
           <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Room" FromRole="Room" ToRole="Reservation" />
         </EntityType>

@@ -147,6 +147,5 @@ C:\Users\Amel\Desktop\DBCResort\DBCResort\Hotel2\bin\System.Web.Razor.xml
 C:\Users\Amel\Desktop\DBCResort\DBCResort\Hotel2\bin\System.Web.WebPages.xml
 C:\Users\Amel\Desktop\DBCResort\DBCResort\Hotel2\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Amel\Desktop\DBCResort\DBCResort\Hotel2\bin\System.Web.WebPages.Razor.xml
-C:\Users\Amel\Desktop\DBCResort\DBCResort\Hotel2\obj\Debug\Hotel2.csprojResolveAssemblyReference.cache
 C:\Users\Amel\Desktop\DBCResort\DBCResort\Hotel2\obj\Debug\Hotel2.dll
 C:\Users\Amel\Desktop\DBCResort\DBCResort\Hotel2\obj\Debug\Hotel2.pdb

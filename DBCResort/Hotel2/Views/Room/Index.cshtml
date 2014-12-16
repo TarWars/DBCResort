@@ -1,63 +1,100 @@
 ﻿@model IEnumerable<Hotel2.Models.Room>
-
 @{
     ViewBag.Title = "Index";
 }
+<!DOCTYPE html>
+<head>
+    <title>Hotel Motel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/HomeStyle.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/CustomScripts/All.js"></script>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.idRoom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Employee.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumOfRoom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumOfBeds)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Info)
-        </th>
-        <th></th>
-    </tr>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="getEverythingCtrl">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.idRoom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Employee.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumOfRoom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumOfBeds)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Info)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idRoom }) |
-            @Html.ActionLink("Details", "Details", new { id = item.idRoom }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.idRoom })
-        </td>
-    </tr>
-}
+            <div id="container">
+                <div id="header">
+                    <div id="website_title">
+                        <div id="title"> DBC Resort </div>
+                        <div id="salgon"> Divine, Beautiful, Classy.</div>
+                    </div>
+                </div>
+                <!-- end of header -->
+                
+                <div id="content" style="padding-left: 20px;">
+                    <div class="page-header" style="padding-left: 5%; padding-top: 10px;">
+                        <h2>Rooms</h2>
+                    </div>
 
-</table>
+                    <div class="row">
+                        <div class="col-lg-1">
+                             RoomID  
+                        </div>
+                        <div class="col-lg-2">
+                                EmployeeUsername
+                              </div>
+                        <div class="col-lg-2">
+                            Room Number
+                        </div>
+                        <div class="col-lg-2">
+                            Number of beds
+                        </div>
+                        <div class="col-lg-1">
+                            Status
+                        </div>
+                        <div class="col-lg-2">
+                            Info
+                        </div>
+                        <div class="col-lg-2">
+
+                        </div>
+                        </div>
+                    
+                    
+                        
+                        @foreach (var item in Model)
+                        {
+                            <div class="row">
+                                <div class="col-lg-1">
+                                    @Html.DisplayFor(modelItem => item.idRoom)
+                                </div>
+                                <div class="col-lg-2">
+    @Html.DisplayFor(modelItem => item.Employee.Username)
+    </div>
+    <div class="col-lg-2">
+    @Html.DisplayFor(modelItem => item.NumOfRoom)
+    </div>
+                                <div class="col-lg-2">
+                                    @Html.DisplayFor(modelItem => item.NumOfBeds)
+                                </div>
+                                <div class="col-lg-1">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </div>
+                                <div class="col-lg-2">
+                                    @Html.DisplayFor(modelItem => item.Info)
+                                </div>
+                                <div class="col-lg-2">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.idRoom }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.idRoom }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.idRoom })
+                                </div>
+</div>
+                        }
+                    <p>
+                        @Html.ActionLink("Create New", "Create")
+                    </p>
+                    
+                </div>
+                <div id="footer">
+                    Copyright &copy; 2015 <a href="#"><strong>DBC Resort</strong></a>
+                </div>
+                <!-- end of footer -->
+        </div>
+        <!-- end of container -->
+</body>

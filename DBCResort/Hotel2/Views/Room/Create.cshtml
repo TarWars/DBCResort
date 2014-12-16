@@ -1,76 +1,99 @@
-﻿@model Hotel2.Models.Room
+﻿﻿@model Hotel2.Models.Room
 
 @{
     ViewBag.Title = "Create";
 }
+<!DOCTYPE html>
+<head>
+    <title>Hotel Motel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/HomeStyle.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/CustomScripts/All.js"></script>
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="getEverythingCtrl">
 
-    <fieldset>
-        <legend>Room</legend>
+            <div id="container">
+                <div id="header">
+                    <div id="website_title">
+                        <div id="title"> DBC Resort </div>
+                        <div id="salgon"> Divine, Beautiful, Classy.</div>
+                    </div>
+                </div>
+                <!-- end of header -->
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.idRoom)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.idRoom)
-            @Html.ValidationMessageFor(model => model.idRoom)
-        </div>
+                <div id="content" style="padding-left: 20px;">
+                    <div class="page-header" style="padding-left: 5%; padding-top: 10px;">
+                        <h2>New room</h2>
+                    </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.idEmployee, "Employee")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("idEmployee", String.Empty)
-            @Html.ValidationMessageFor(model => model.idEmployee)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NumOfRoom)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NumOfRoom)
-            @Html.ValidationMessageFor(model => model.NumOfRoom)
-        </div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NumOfBeds)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NumOfBeds)
-            @Html.ValidationMessageFor(model => model.NumOfBeds)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Status)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Status)
-            @Html.ValidationMessageFor(model => model.Status)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Info)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Info)
-            @Html.ValidationMessageFor(model => model.Info)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                        <fieldset>
+                          
+                          
+                            
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.idEmployee, "Employee")
+                            </div>
+                            <div class="editor-field">
+                                @Html.DropDownList("idEmployee", String.Empty)
+                                @Html.ValidationMessageFor(model => model.idEmployee)
+                            </div>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.NumOfRoom)
+                            </div>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.NumOfRoom)
+                                @Html.ValidationMessageFor(model => model.NumOfRoom)
+                            </div>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.NumOfBeds)
+                            </div>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.NumOfBeds)
+                                @Html.ValidationMessageFor(model => model.NumOfBeds)
+                            </div>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Status)
+                            </div>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Status)
+                                @Html.ValidationMessageFor(model => model.Status)
+                            </div>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.Info)
+                            </div>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.Info)
+                                @Html.ValidationMessageFor(model => model.Info)
+                            </div>
+                            <p>
+                                <input type="submit" value="Create" />
+                            </p>
+                        </fieldset>
+                    }
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                    @section Scripts {
+                        @Scripts.Render("~/bundles/jqueryval")
+                    }
+                </div>
+                <div id="footer">
+                    Copyright &copy; 2015 <a href="#"><strong>DBC Resort</strong></a>
+                </div>
+                <!-- end of footer -->
+            </div>
+            <!-- end of container -->
+</body>

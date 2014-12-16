@@ -1,37 +1,73 @@
-﻿@{
-    Layout = null;
-}
+﻿@model Hotel2.Models.Reservation
 
 <!DOCTYPE html>
-
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <title>Hotel Motel</title>
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/Content/HomeStyle.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/CustomScripts/All.js"></script>
 </head>
-<body >
-    <nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0px;">
-        <div class="container">
-            <a href="/home/index" class="navbar-brand" style="color: #ffffff;">Pocetna</a>
-            <a href="/room/index" class="navbar-brand" style="color: #ffffff;">Sobe</a>
-            <a href="/employee/index" class="navbar-brand" style="color: #ffffff;">Uposlenici</a>
-            <a href="/reservation/index" class="navbar-brand" style="color: #ffffff;">Rezervacije</a>
-            <a href="/guest/index" class="navbar-brand" style="color: #ffffff;">Gosti</a>
-            <a href="/new/index" class="navbar-brand" style="color: #ffffff;">Novosti</a>
-        </div>
-    </nav>
-    <div  style="background-color: #808080; min-height:1000px; color: #ffffff; " >
-        <div class="container" style="padding-top: 20px;">
-            <b>Dobrodošli!</b>
+
+<body>
+    <div ng-app="app">
+        <div ng-controller="getEverythingCtrl">
+
+
+            <div id="container" >
+                <div id="header">
+                    <div id="website_title">
+                        <a href="/home/index">
+                            <div id="title"> DBC Resort </div>
+                            <div id="salgon"> Divine, Beautiful, Classy.</div>
+                        </a>
+                    </div>
+                </div>
+               <div style="margin-top: 20px; margin-left: 10px; margin-bottom: 20px;">
+                   <div class="row">
+                       <div class="col-lg-2">
+                          
+                           <a href="/reservation/index" class="list-group-item">
+                               Reservations
+                               <span class="badge">14</span>
+                           </a>
+                       </div><!-- /.col-lg-6 -->
+                       <div class="col-lg-2">
+                           <a href="/room/index" class="list-group-item">
+                               Rooms
+                               <span class="badge">14</span>
+                           </a>
+                       </div><!-- /.col-lg-6 -->
+                       <div class="col-lg-2">
+                           <a href="/employee/index" class="list-group-item">
+                               Employees
+                               <span class="badge">14</span>
+                           </a>
+                       </div><!-- /.col-lg-6 -->
+                       <div class="col-lg-2">
+                           <a href="/guest/index" class="list-group-item">
+                               Guests
+                               <span class="badge">14</span>
+                           </a>
+                       </div><!-- /.col-lg-6 -->
+                       <div class="col-lg-2">
+                           <a href="/news/index" class="list-group-item">
+                               News
+                               <span class="badge">14</span>
+                           </a>
+                       </div><!-- /.col-lg-6 -->
+                   </div><!-- /.row -->
+
+               </div>
+                <div id="footer">
+                    Copyright &copy; 2015 <a href="#"><strong>DBC Resort</strong></a>
+                </div>
+                <!-- end of footer -->
+            </div>
         </div>
     </div>
+    <!-- end of container -->
 </body>
-</html>

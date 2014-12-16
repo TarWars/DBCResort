@@ -71,7 +71,7 @@
     <Property Name="NumOfRoom" Type="Int32" Nullable="false" />
     <Property Name="NumOfBeds" Type="Int32" Nullable="false" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Info" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Employee" Relationship="Self.FK_Room_Employee" FromRole="Room" ToRole="Employee" />
     <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Room" FromRole="Room" ToRole="Reservation" />
   </EntityType>
