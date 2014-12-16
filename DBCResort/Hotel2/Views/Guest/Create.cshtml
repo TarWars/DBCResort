@@ -1,92 +1,163 @@
 ﻿@model Hotel2.Models.Guest
-
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Registracija";
 }
 
-<h2>Create</h2>
+<!DOCTYPE html>
+<head>
+    <title>Hotel Motel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/HomeStyle.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/CustomScripts/All.js"></script>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Guest</legend>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="getEverythingCtrl">
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.idGuest)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.idGuest)
-            @Html.ValidationMessageFor(model => model.idGuest)
-        </div>
+            <div id="container">
+                <div id="header">
+                    <div id="website_title">
+                        <div id="title"> DBC Resort </div>
+                        <div id="salgon"> Divine, Beautiful, Classy.</div>
+                    </div>
+                </div>
+                <!-- end of header -->
+                <div id="banner">
+                    <div id="menu">
+                        <ul>
+                            <li><a href="/home/index">Home</a></li>
+                            <li><a href="/session/login">Login</a></li>
+                            <li><a href="#">Slike</a></li>
+                            <li><a href="/guest/create" class="current">Registracija</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                            <li><a href="/dashboard/index">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end of banner -->
+                <div id="content">
+                    <div class="page-header" style="padding-left: 5%; padding-top: 10px;">
+                        <h2>Registration</h2>
+                    </div>
+                    <div style="padding-left: 7%;">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Username)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Username)
-            @Html.ValidationMessageFor(model => model.Username)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FirstName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.LastName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
-        </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="width: 100px;">
+                                            Username
+                                        </span>
+                                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Username)
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="width: 100px;">
+                                            Firstname
+                                        </span>
+                                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.FirstName)
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                            </div><!-- /.row -->
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="width: 100px;">
+                                            Password
+                                        </span>
+                                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="width: 100px;">
+                                            Lastname
+                                        </span>
+                                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.LastName)
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                            </div><!-- /.row -->
+                            <br />
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DateOfBirth)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DateOfBirth)
-            @Html.ValidationMessageFor(model => model.DateOfBirth)
-        </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="width: 100px;">
+                                            Email
+                                        </span>
+                                        <!-- Ubaciti textBoxFor za email, kad se email kolona upise u bazu-->
+                                        <input type="text" class="form-control" />
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" style="width: 100px;">
+                                            Date of birth
+                                        </span>
+                                        @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DateOfBirth)
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                            </div><!-- /.row -->
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CreditCardNum)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CreditCardNum)
-            @Html.ValidationMessageFor(model => model.CreditCardNum)
-        </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Creditcard number
+                                        </span>
+                                        @Html.TextBoxFor(model => model.CreditCardNum, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CreditCardNum)
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            Date of expiration
+                                        </span>
+                                        @Html.TextBoxFor(model => model.DataOfExpiration, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DataOfExpiration)
+                                    </div><!-- /input-group -->
+                                </div><!-- /.col-lg-6 -->
+                            </div><!-- /.row -->
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DataOfExpiration)
+                            <br />
+                            <p>
+
+
+                                <button type="submit" class="btn btn-primary"> Create account </button>
+                            </p>
+
+                        }
+                        <br />
+                    </div>
+
+
+                </div>
+                <div id="footer">
+                    Copyright &copy; 2015 <a href="#"><strong>DBC Resort</strong></a>
+                </div>
+                <!-- end of footer -->
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.DataOfExpiration)
-            @Html.ValidationMessageFor(model => model.DataOfExpiration)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    </div>
+    <!-- end of container -->
+</body>

@@ -1,0 +1,75 @@
+﻿@model Hotel2.Models.Reservation
+<!DOCTYPE html>
+<head>
+    <title>Hotel Motel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/HomeStyle.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/CustomScripts/All.js"></script>
+
+
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="getEverythingCtrl">
+
+            <div id="container">
+                <div id="header">
+                    <div id="website_title">
+                        <div id="title"> DBC Resort </div>
+                        <div id="salgon"> Divine, Beautiful, Classy.</div>
+                    </div>
+                </div>
+                <!-- end of header -->
+                <div id="banner">
+                    <div id="menu">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="/session/login" class="current">Login</a></li>
+                            <li><a href="#">Slike</a></li>
+                            <li><a href="/guest/create">Registracija</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                            <li><a href="/dashboard/index">Dashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end of banner -->
+                <div id="content">
+                    <div class="page-header" style="padding-left: 5%; padding-top: 10px;">
+                        <h2>Login</h2>
+                    </div>
+
+                    @using (Html.BeginForm("Create", "Session", FormMethod.Post))
+                    {
+
+                        <div style="padding-left: 7%;">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" placeholder="Username" />
+
+                            </div>
+                            <br />
+                            <div class="input-group">
+
+                                <input type="password" class="form-control" placeholder="Password" />
+                            </div>
+                            <br />
+                            <button type="submit" class="btn btn-success"> Login </button>
+                        </div>
+                    }
+                    <br />
+
+
+
+                </div>
+                <div id="footer">
+                    Copyright &copy; 2015 <a href="#"><strong>DBC Resort</strong></a>
+                </div>
+                <!-- end of footer -->
+            </div>
+        </div>
+    </div>
+    <!-- end of container -->
+</body>
